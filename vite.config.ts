@@ -14,6 +14,8 @@ export default defineConfig({
   },
   // Note on hosting: this app is TanStack Start (SSR-first). The default build targets
   // Cloudflare Workers (via nitro). The current live demo is on Lovable
-  // (customer-response-engine.lovable.app). A GitHub Pages / static-SPA build is possible
-  // but requires converting the app to TanStack Router's SPA mode — see docs/production-roadmap.md.
+  // (customer-response-engine.lovable.app). Netlify deploys override the target via
+  // NITRO_PRESET in netlify.toml, which also pins the publish directory to `dist`.
+  // A GitHub Pages / static-SPA build is possible but requires converting the app to
+  // TanStack Router's SPA mode — see docs/production-roadmap.md.
 });

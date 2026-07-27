@@ -26,6 +26,11 @@ pnpm-lock.yaml
 .wrangler/
 .dev.vars
 
+# Netlify build output (nitro `netlify` preset writes the SSR handler here)
+.netlify/functions-internal/
+.netlify/edge-functions/
+.netlify/deploy/
+
 # Environment files (NEVER commit real secrets)
 .env
 .env.*
