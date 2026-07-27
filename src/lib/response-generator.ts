@@ -47,22 +47,102 @@ interface ThemeSignal {
 }
 
 const THEME_SIGNALS: ThemeSignal[] = [
-  { key: "reading", label: "Reading progress", pillar: "Personalized learning", keywords: /\b(read(?:ing)?|phonics|comprehension|fluency|book)\b/i },
-  { key: "math", label: "Math support", pillar: "Personalized learning", keywords: /\b(math|algebra|geometry|fractions?|multiplication)\b/i },
-  { key: "writing", label: "Writing", pillar: "Personalized learning", keywords: /\b(writing|essay|paragraph|composition)\b/i },
-  { key: "study", label: "Study skills", pillar: "Academic progress and confidence", keywords: /\b(study skills?|organization|homework habits?)\b/i },
-  { key: "homework", label: "Homework help", pillar: "Supportive learning environment", keywords: /\b(homework|assignments?)\b/i },
-  { key: "testprep", label: "Test prep", pillar: "Assessment-first support", keywords: /\b(sat|act|test prep|standardized|isee|ssat)\b/i },
-  { key: "summer", label: "Summer learning", pillar: "Summer learning", keywords: /\b(summer|break|camp)\b/i },
-  { key: "confidence", label: "Confidence", pillar: "Academic progress and confidence", keywords: /\b(confidence|confident|self[- ]esteem|proud|believe(?:s|d)?)\b/i },
-  { key: "grades", label: "Grades and results", pillar: "Academic progress and confidence", keywords: /\b(grades?|score|improved|A[- ]|A\+|gpa)\b/i },
-  { key: "teacher", label: "Teacher and staff", pillar: "Experienced educators", keywords: /\b(teacher|tutor|instructor|staff|educator)\b/i },
-  { key: "schedule", label: "Scheduling and flexibility", pillar: "Flexible scheduling", keywords: /\b(schedul|flexible|availab|book(?:ed|ing)?|time slot)\b/i },
-  { key: "communication", label: "Communication with parents", pillar: "Parent communication and progress reviews", keywords: /\b(communicat|updates?|progress report|meeting|conference)\b/i },
-  { key: "assessment", label: "Assessment", pillar: "Assessment-first support", keywords: /\b(assessment|evaluat|diagnostic|placement)\b/i },
-  { key: "environment", label: "Learning environment", pillar: "Supportive learning environment", keywords: /\b(welcoming|patient|kind|warm|environment|atmosphere|caring)\b/i },
-  { key: "value", label: "Price and value", pillar: "Tutoring investment and value", keywords: /\b(price|cost|expensive|value|worth|money|afford|investment|pricey)\b/i },
-  { key: "local", label: "Local center", pillar: "Local center identity", keywords: /\b(neighborhood|local|nearby|community)\b/i },
+  {
+    key: "reading",
+    label: "Reading progress",
+    pillar: "Personalized learning",
+    keywords: /\b(read(?:ing)?|phonics|comprehension|fluency|book)\b/i,
+  },
+  {
+    key: "math",
+    label: "Math support",
+    pillar: "Personalized learning",
+    keywords: /\b(math|algebra|geometry|fractions?|multiplication)\b/i,
+  },
+  {
+    key: "writing",
+    label: "Writing",
+    pillar: "Personalized learning",
+    keywords: /\b(writing|essay|paragraph|composition)\b/i,
+  },
+  {
+    key: "study",
+    label: "Study skills",
+    pillar: "Academic progress and confidence",
+    keywords: /\b(study skills?|organization|homework habits?)\b/i,
+  },
+  {
+    key: "homework",
+    label: "Homework help",
+    pillar: "Supportive learning environment",
+    keywords: /\b(homework|assignments?)\b/i,
+  },
+  {
+    key: "testprep",
+    label: "Test prep",
+    pillar: "Assessment-first support",
+    keywords: /\b(sat|act|test prep|standardized|isee|ssat)\b/i,
+  },
+  {
+    key: "summer",
+    label: "Summer learning",
+    pillar: "Summer learning",
+    keywords: /\b(summer|break|camp)\b/i,
+  },
+  {
+    key: "confidence",
+    label: "Confidence",
+    pillar: "Academic progress and confidence",
+    keywords: /\b(confidence|confident|self[- ]esteem|proud|believe(?:s|d)?)\b/i,
+  },
+  {
+    key: "grades",
+    label: "Grades and results",
+    pillar: "Academic progress and confidence",
+    keywords: /\b(grades?|score|improved|A[- ]|A\+|gpa)\b/i,
+  },
+  {
+    key: "teacher",
+    label: "Teacher and staff",
+    pillar: "Experienced educators",
+    keywords: /\b(teacher|tutor|instructor|staff|educator)\b/i,
+  },
+  {
+    key: "schedule",
+    label: "Scheduling and flexibility",
+    pillar: "Flexible scheduling",
+    keywords: /\b(schedul|flexible|availab|book(?:ed|ing)?|time slot)\b/i,
+  },
+  {
+    key: "communication",
+    label: "Communication with parents",
+    pillar: "Parent communication and progress reviews",
+    keywords: /\b(communicat|updates?|progress report|meeting|conference)\b/i,
+  },
+  {
+    key: "assessment",
+    label: "Assessment",
+    pillar: "Assessment-first support",
+    keywords: /\b(assessment|evaluat|diagnostic|placement)\b/i,
+  },
+  {
+    key: "environment",
+    label: "Learning environment",
+    pillar: "Supportive learning environment",
+    keywords: /\b(welcoming|patient|kind|warm|environment|atmosphere|caring)\b/i,
+  },
+  {
+    key: "value",
+    label: "Price and value",
+    pillar: "Tutoring investment and value",
+    keywords: /\b(price|cost|expensive|value|worth|money|afford|investment|pricey)\b/i,
+  },
+  {
+    key: "local",
+    label: "Local center",
+    pillar: "Local center identity",
+    keywords: /\b(neighborhood|local|nearby|community)\b/i,
+  },
 ];
 
 function detectThemes(review: string): ThemeSignal[] {
@@ -81,8 +161,10 @@ function detectThemes(review: string): ThemeSignal[] {
 
 // --- Sentiment --------------------------------------------------------------
 
-const NEGATIVE_TERMS = /\b(rude|unprofessional|waste|refund|cancel|angry|awful|terrible|worst|disappointed|frustrat|slow|late|ignored|mistake|problem|issue|concern|complain|expensive|overpriced)\b/i;
-const POSITIVE_TERMS = /\b(love|great|excellent|amazing|wonderful|fantastic|recommend|helpful|kind|patient|improved|progress|thank)\b/i;
+const NEGATIVE_TERMS =
+  /\b(rude|unprofessional|waste|refund|cancel|angry|awful|terrible|worst|disappointed|frustrat|slow|late|ignored|mistake|problem|issue|concern|complain|expensive|overpriced)\b/i;
+const POSITIVE_TERMS =
+  /\b(love|great|excellent|amazing|wonderful|fantastic|recommend|helpful|kind|patient|improved|progress|thank)\b/i;
 
 function detectSentiment(review: string, stars: number): string {
   if (!review.trim()) {
@@ -111,7 +193,8 @@ function detectReviewType(review: string, stars: number): string {
   if (stars <= 2) return "Complaint";
   if (stars === 3) return "Mixed experience";
   if (words < 20) return "Brief endorsement";
-  if (/\b(my (son|daughter|child|kid)|our (son|daughter|child|kid))\b/i.test(text)) return "Parent testimonial";
+  if (/\b(my (son|daughter|child|kid)|our (son|daughter|child|kid))\b/i.test(text))
+    return "Parent testimonial";
   return "Detailed positive review";
 }
 
@@ -119,10 +202,17 @@ function detectReviewType(review: string, stars: number): string {
 
 function detectImportantConcern(review: string, stars: number): string | null {
   if (stars <= 3 || NEGATIVE_TERMS.test(review)) {
-    if (/\b(schedul|book|time slot|cancel|reschedul)\b/i.test(review)) return "Scheduling experience";
-    if (/\b(rude|unprofessional|staff|tutor|teacher)\b/i.test(review) && NEGATIVE_TERMS.test(review)) return "Staff interaction";
-    if (/\b(price|cost|expensive|overpriced|refund|money)\b/i.test(review)) return "Price or billing";
-    if (/\b(progress|results|improv)\b/i.test(review) && NEGATIVE_TERMS.test(review)) return "Perceived lack of progress";
+    if (/\b(schedul|book|time slot|cancel|reschedul)\b/i.test(review))
+      return "Scheduling experience";
+    if (
+      /\b(rude|unprofessional|staff|tutor|teacher)\b/i.test(review) &&
+      NEGATIVE_TERMS.test(review)
+    )
+      return "Staff interaction";
+    if (/\b(price|cost|expensive|overpriced|refund|money)\b/i.test(review))
+      return "Price or billing";
+    if (/\b(progress|results|improv)\b/i.test(review) && NEGATIVE_TERMS.test(review))
+      return "Perceived lack of progress";
     if (stars <= 2) return "Overall experience fell short";
     if (stars === 3) return "Mixed experience worth acknowledging";
   }
@@ -131,10 +221,13 @@ function detectImportantConcern(review: string, stars: number): string | null {
 
 function detectPrivacySensitivity(review: string): string | null {
   const flags: string[] = [];
-  if (/\b(adhd|dyslex|autis|iep|504|learning disab|learning differenc)\b/i.test(review)) flags.push("learning difference mentioned");
-  if (/\b(grade [k1-9]|kindergarten|[1-9](st|nd|rd|th) grade)\b/i.test(review)) flags.push("child's grade level");
+  if (/\b(adhd|dyslex|autis|iep|504|learning disab|learning differenc)\b/i.test(review))
+    flags.push("learning difference mentioned");
+  if (/\b(grade [k1-9]|kindergarten|[1-9](st|nd|rd|th) grade)\b/i.test(review))
+    flags.push("child's grade level");
   if (/\b(score|gpa|reading level)\b/i.test(review)) flags.push("specific scores");
-  if (/\bmy (son|daughter)\b/i.test(review) && /\b[A-Z][a-z]{2,}\b/.test(review)) flags.push("possible child name");
+  if (/\bmy (son|daughter)\b/i.test(review) && /\b[A-Z][a-z]{2,}\b/.test(review))
+    flags.push("possible child name");
   if (!flags.length) return null;
   return `Do not amplify: ${flags.join(", ")}.`;
 }
@@ -222,9 +315,11 @@ function openingThank(reviewer: string | null, stars: number, hasConcern: boolea
   if (stars >= 5) return `Thank you${name} for taking the time to share this.`;
   // 4★ WITHOUT a detected concern reads as purely positive — don't imply criticism
   // (per Rule 9 in docs/product-decisions.md-adjacent guidance from live testing).
-  if (stars === 4 && hasConcern) return `Thank you${name} for the kind words and for the honest feedback.`;
+  if (stars === 4 && hasConcern)
+    return `Thank you${name} for the kind words and for the honest feedback.`;
   if (stars === 4) return `Thank you${name} for taking the time to share this.`;
-  if (stars === 3) return `Thank you${name} for the thoughtful feedback — both the positives and the concerns.`;
+  if (stars === 3)
+    return `Thank you${name} for the thoughtful feedback — both the positives and the concerns.`;
   return `Thank you${name} for taking the time to share this. We are sorry the experience fell short of what you were hoping for.`;
 }
 
@@ -273,7 +368,8 @@ function reflection(themes: ThemeSignal[], stars: number): string {
 function closing(stars: number, center: Center): string {
   if (stars >= 5) return `We are grateful you chose ${center}.`;
   if (stars === 4) return `We appreciate you being part of the ${center} community.`;
-  if (stars === 3) return `We would welcome the chance to talk directly — please reach out to ${center} so we can better understand your experience.`;
+  if (stars === 3)
+    return `We would welcome the chance to talk directly — please reach out to ${center} so we can better understand your experience.`;
   return `If you are open to it, please reach out to ${center} directly so we can better understand what happened and try to make it right.`;
 }
 
@@ -307,11 +403,13 @@ function composeResponse(input: GeneratorInput, themes: ThemeSignal[], pillars: 
   const reflect = reflection(themes, stars);
 
   // Rotate pillar pick with regenerateSeed for variety on regenerate.
-  const rotated = pillars.length > 1 && regenerateSeed % 2 === 1
-    ? [pillars[1], pillars[0], ...pillars.slice(2)]
-    : pillars;
+  const rotated =
+    pillars.length > 1 && regenerateSeed % 2 === 1
+      ? [pillars[1], pillars[0], ...pillars.slice(2)]
+      : pillars;
   const pillarLine = pillarSentence(rotated[0], center);
-  const secondPillar = rotated[1] && stars >= 4 && words > 40 ? pillarSentence(rotated[1], center) : "";
+  const secondPillar =
+    rotated[1] && stars >= 4 && words > 40 ? pillarSentence(rotated[1], center) : "";
 
   const close = closing(stars, center);
 
@@ -344,7 +442,9 @@ function composeResponse(input: GeneratorInput, themes: ThemeSignal[], pillars: 
     body = [open, reflect, pillarLine, childTouch, contextNudge, close].filter(Boolean).join(" ");
     body = trimSentences(body, stars <= 3 ? 3 : 4);
   } else {
-    body = [open, reflect, pillarLine, secondPillar, childTouch, contextNudge, close].filter(Boolean).join(" ");
+    body = [open, reflect, pillarLine, secondPillar, childTouch, contextNudge, close]
+      .filter(Boolean)
+      .join(" ");
     body = trimSentences(body, stars <= 3 ? 4 : 5);
   }
 
@@ -354,40 +454,70 @@ function composeResponse(input: GeneratorInput, themes: ThemeSignal[], pillars: 
 
 // --- Why This Response Works ------------------------------------------------
 
-function whyItWorks(themes: ThemeSignal[], pillars: string[], center: Center, stars: number): string[] {
-  const themeLabel = themes[0]?.label ?? (stars >= 4 ? "the overall positive experience" : "the concern raised");
+function whyItWorks(
+  themes: ThemeSignal[],
+  pillars: string[],
+  center: Center,
+  stars: number,
+): string[] {
+  const themeLabel =
+    themes[0]?.label ?? (stars >= 4 ? "the overall positive experience" : "the concern raised");
   const bullets: string[] = [];
-  bullets.push(`Reflects ${themeLabel.toLowerCase()} conceptually without echoing the reviewer's phrasing.`);
-  bullets.push(`Reinforces ${pillars.slice(0, 2).join(" and ").toLowerCase()} without stacking every brand strength at once.`);
-  bullets.push(`Names ${center} naturally to support local trust and steady search signals, without keyword stuffing.`);
+  bullets.push(
+    `Reflects ${themeLabel.toLowerCase()} conceptually without echoing the reviewer's phrasing.`,
+  );
+  bullets.push(
+    `Reinforces ${pillars.slice(0, 2).join(" and ").toLowerCase()} without stacking every brand strength at once.`,
+  );
+  bullets.push(
+    `Names ${center} naturally to support local trust and steady search signals, without keyword stuffing.`,
+  );
   return bullets;
 }
 
 // --- Review Considerations --------------------------------------------------
 
-function reviewConsiderations(input: GeneratorInput, themes: ThemeSignal[], concern: string | null, privacy: string | null): string[] {
+function reviewConsiderations(
+  input: GeneratorInput,
+  themes: ThemeSignal[],
+  concern: string | null,
+  privacy: string | null,
+): string[] {
   const items: string[] = [];
-  const hasValue = themes.some((t) => t.key === "value") || /price|cost|value|expensive|worth/i.test(input.review);
+  const hasValue =
+    themes.some((t) => t.key === "value") || /price|cost|value|expensive|worth/i.test(input.review);
   if (hasValue) {
-    items.push("Price came up — keep the framing on investment and value; do not position the brand as cheap or apologize for pricing.");
+    items.push(
+      "Price came up — keep the framing on investment and value; do not position the brand as cheap or apologize for pricing.",
+    );
   }
   if (input.stars <= 3 || concern) {
-    items.push("Acknowledge the concern directly, without debating specifics publicly. If details are needed, keep the follow-up offline.");
+    items.push(
+      "Acknowledge the concern directly, without debating specifics publicly. If details are needed, keep the follow-up offline.",
+    );
   }
   if (privacy) {
-    items.push("A private detail about the student appeared in the review. Do not repeat or expand on it in the public response.");
+    items.push(
+      "A private detail about the student appeared in the review. Do not repeat or expand on it in the public response.",
+    );
   }
   if (/certified|credential|licensed/i.test(input.review + " " + (input.additionalContext ?? ""))) {
-    items.push('Only use "certified teachers" if confirmed for this center; otherwise use "experienced educators."');
+    items.push(
+      'Only use "certified teachers" if confirmed for this center; otherwise use "experienced educators."',
+    );
   }
   if (/no longer works|former|used to work|left the center/i.test(input.additionalContext ?? "")) {
-    items.push("A named staff member is no longer at the center — do not repeat the name in the response.");
+    items.push(
+      "A named staff member is no longer at the center — do not repeat the name in the response.",
+    );
   }
   if (input.stars <= 2) {
     items.push("This may warrant a direct offline follow-up in addition to the public reply.");
   }
   if (/old|older|last year|years ago/i.test(input.additionalContext ?? "")) {
-    items.push("Reviewer's experience is older — a brief acknowledgment of time passed can be appropriate, without over-explaining.");
+    items.push(
+      "Reviewer's experience is older — a brief acknowledgment of time passed can be appropriate, without over-explaining.",
+    );
   }
   return items;
 }

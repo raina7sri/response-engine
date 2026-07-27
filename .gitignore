@@ -26,6 +26,13 @@ pnpm-lock.yaml
 .wrangler/
 .dev.vars
 
+# Netlify — nitro's `netlify` preset writes build output into .netlify/.
+# Scoped to the generated subpaths so tracked files in .netlify/ stay visible.
+.netlify/functions-internal/
+.netlify/edge-functions/
+.netlify/deploy/
+.netlify/state.json
+
 # Environment files (NEVER commit real secrets)
 .env
 .env.*

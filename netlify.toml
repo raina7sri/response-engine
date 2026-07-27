@@ -1,0 +1,20 @@
+# Netlify build configuration.
+#
+# This app is TanStack Start (SSR-first) built through Nitro. The `netlify`
+# preset splits its output in two:
+#
+#   dist/                            -> static client assets (the publish dir)
+#   .netlify/functions-internal/     -> the SSR server handler, picked up
+#                                       automatically by Netlify
+#
+# `publish` MUST stay in sync with the preset's `output.publicDir`. Nitro's
+# netlify preset writes to `dist/`, NOT to `.output/public` (that is the Node
+# preset's layout). Settings in this file take precedence over the values
+# configured in the Netlify UI.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

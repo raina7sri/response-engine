@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://raina7sri.github.io/response-engine/sitemap.xml
+Sitemap: https://response-engine.netlify.app/sitemap.xml
