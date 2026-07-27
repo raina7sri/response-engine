@@ -16,11 +16,10 @@ dist-ssr
 .nitro
 *.local
 
-# This is a Bun-first project — bun.lock is authoritative.
-# npm/yarn/pnpm lockfiles are excluded to avoid drift.
-package-lock.json
+# Alternate package manager lockfiles (project is npm-based post-SPA-refactor)
 yarn.lock
 pnpm-lock.yaml
+bun.lock
 
 # Wrangler / Cloudflare
 .wrangler/
@@ -43,3 +42,4 @@ pnpm-lock.yaml
 *.sw?
 UPLOAD-CHECKLIST.txt
 test-outputs.ts
+spa_test.*

@@ -10,17 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as GuidesPositiveFeedbackRouteImport } from './routes/guides.positive-feedback'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuidesPositiveFeedbackRoute = GuidesPositiveFeedbackRouteImport.update({
@@ -31,31 +25,27 @@ const GuidesPositiveFeedbackRoute = GuidesPositiveFeedbackRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guides/positive-feedback': typeof GuidesPositiveFeedbackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guides/positive-feedback': typeof GuidesPositiveFeedbackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guides/positive-feedback': typeof GuidesPositiveFeedbackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml' | '/guides/positive-feedback'
+  fullPaths: '/' | '/guides/positive-feedback'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml' | '/guides/positive-feedback'
-  id: '__root__' | '/' | '/sitemap.xml' | '/guides/positive-feedback'
+  to: '/' | '/guides/positive-feedback'
+  id: '__root__' | '/' | '/guides/positive-feedback'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   GuidesPositiveFeedbackRoute: typeof GuidesPositiveFeedbackRoute
 }
 
@@ -66,13 +56,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides/positive-feedback': {
@@ -87,19 +70,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
   GuidesPositiveFeedbackRoute: GuidesPositiveFeedbackRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
