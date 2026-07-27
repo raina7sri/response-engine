@@ -1,6 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useRef, useState } from "react";
-import { Star, Copy, RefreshCw, Info, Lightbulb, AlertCircle, ChevronDown, ChevronRight, Plus, Briefcase } from "lucide-react";
+import {
+  Star,
+  Copy,
+  RefreshCw,
+  Info,
+  Lightbulb,
+  AlertCircle,
+  ChevronDown,
+  ChevronRight,
+  Plus,
+  Briefcase,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -55,10 +66,7 @@ export const Route = createFileRoute("/")({
 });
 
 // Illustrative sample — replace with your organization's centers/branches/teams.
-const DEFAULT_ORGANIZATIONS: Center[] = [
-  "Sample Organization A",
-  "Sample Organization B",
-];
+const DEFAULT_ORGANIZATIONS: Center[] = ["Sample Organization A", "Sample Organization B"];
 
 const USE_CASES = [
   "Customer feedback",
@@ -69,13 +77,7 @@ const USE_CASES = [
 
 const ADD_NEW_VALUE = "__add_new__";
 
-function StarPicker({
-  value,
-  onChange,
-}: {
-  value: number;
-  onChange: (n: number) => void;
-}) {
+function StarPicker({ value, onChange }: { value: number; onChange: (n: number) => void }) {
   const [hover, setHover] = useState(0);
   return (
     <div
@@ -104,19 +106,13 @@ function StarPicker({
             <Star
               className={
                 "h-7 w-7 transition-colors " +
-                (active
-                  ? "fill-[var(--accent)] text-accent"
-                  : "text-muted-foreground/40")
+                (active ? "fill-[var(--accent)] text-accent" : "text-muted-foreground/40")
               }
             />
           </button>
         );
       })}
-      {value > 0 && (
-        <span className="ml-2 text-sm text-muted-foreground">
-          {value} / 5
-        </span>
-      )}
+      {value > 0 && <span className="ml-2 text-sm text-muted-foreground">{value} / 5</span>}
     </div>
   );
 }
@@ -259,7 +255,8 @@ function Index() {
             Customer Response Engine
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            A reusable workflow that turns customer communications into governed, brand-aligned responses while reserving business judgment for humans.
+            A reusable workflow that turns customer communications into governed, brand-aligned
+            responses while reserving business judgment for humans.
           </p>
           <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-accent" />
         </div>
@@ -271,7 +268,9 @@ function Index() {
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             Process
           </span>
-          <span aria-hidden className="text-muted-foreground/60">·</span>
+          <span aria-hidden className="text-muted-foreground/60">
+            ·
+          </span>
           {[
             "Customer Communication",
             "AI Reasoning",
@@ -283,144 +282,139 @@ function Index() {
             <div key={step} className="flex items-center gap-3">
               <span className="text-sm font-medium text-foreground">{step}</span>
               {i < arr.length - 1 && (
-                <span aria-hidden className="text-base text-primary/60">→</span>
+                <span aria-hidden className="text-base text-primary/60">
+                  →
+                </span>
               )}
             </div>
           ))}
         </div>
       </div>
 
-
       <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
-        <div>
-        {/* Form */}
-        <Card className="shadow-sm">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-base">Draft a response</CardTitle>
-            <p className="text-sm text-muted-foreground">
-              Paste the request and get a customer response.
-            </p>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="review">Customer communication</Label>
-              <Textarea
-                id="review"
-                value={review}
-                onChange={(e) => setReview(e.target.value)}
-                placeholder="Paste the communication. The system determines the rest."
-                className="min-h-[160px] resize-y"
-              />
-              <p className="text-xs text-muted-foreground">
-                Leave blank for a star-only review.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="reviewerName">Customer name</Label>
-                <Input
-                  id="reviewerName"
-                  value={reviewerName}
-                  onChange={(e) => setReviewerName(e.target.value)}
-                  placeholder="e.g. Jamie"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label>Star rating (if applicable)</Label>
-                <StarPicker value={stars} onChange={setStars} />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label>Organization</Label>
-              <Select value={center} onValueChange={handleOrgChange}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Organization" />
-                </SelectTrigger>
-                <SelectContent>
-                  {organizations.map((org) => (
-                    <SelectItem key={org} value={org}>
-                      {org}
-                    </SelectItem>
-                  ))}
-                  <SelectItem value={ADD_NEW_VALUE} className="text-primary">
-                    <span className="flex items-center gap-2">
-                      <Plus className="h-3.5 w-3.5" />
-                      Add new organization…
-                    </span>
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-              {addingOrg && (
-                <div className="flex flex-col gap-2 rounded-md border border-border bg-muted/30 p-3 sm:flex-row">
-                  <Input
-                    autoFocus
-                    value={newOrgName}
-                    onChange={(e) => setNewOrgName(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        handleAddOrg();
-                      }
-                    }}
-                    placeholder="New organization name"
-                    className="flex-1"
+          <div>
+            {/* Form */}
+            <Card className="shadow-sm">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-base">Draft a response</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Paste the request and get a customer response.
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="review">Customer communication</Label>
+                  <Textarea
+                    id="review"
+                    value={review}
+                    onChange={(e) => setReview(e.target.value)}
+                    placeholder="Paste the communication. The system determines the rest."
+                    className="min-h-[160px] resize-y"
                   />
-                  <div className="flex gap-2">
-                    <Button type="button" onClick={handleAddOrg} size="sm">
-                      Add
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => {
-                        setAddingOrg(false);
-                        setNewOrgName("");
-                      }}
-                    >
-                      Cancel
-                    </Button>
+                  <p className="text-xs text-muted-foreground">
+                    Leave blank for a star-only review.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="reviewerName">Customer name</Label>
+                    <Input
+                      id="reviewerName"
+                      value={reviewerName}
+                      onChange={(e) => setReviewerName(e.target.value)}
+                      placeholder="e.g. Jamie"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Star rating (if applicable)</Label>
+                    <StarPicker value={stars} onChange={setStars} />
                   </div>
                 </div>
-              )}
-            </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="additionalContext">Additional context</Label>
-              <Textarea
-                id="additionalContext"
-                value={additionalContext}
-                onChange={(e) => setAdditionalContext(e.target.value)}
-                placeholder="e.g. The product has been discontinued. Please share the updated pricing."
-                className="min-h-[90px] resize-y"
-              />
-              <p className="text-xs text-muted-foreground">
-                Add only information the assistant could not know from the pasted content.
-              </p>
-            </div>
+                <div className="space-y-2">
+                  <Label>Organization</Label>
+                  <Select value={center} onValueChange={handleOrgChange}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select Organization" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {organizations.map((org) => (
+                        <SelectItem key={org} value={org}>
+                          {org}
+                        </SelectItem>
+                      ))}
+                      <SelectItem value={ADD_NEW_VALUE} className="text-primary">
+                        <span className="flex items-center gap-2">
+                          <Plus className="h-3.5 w-3.5" />
+                          Add new organization…
+                        </span>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {addingOrg && (
+                    <div className="flex flex-col gap-2 rounded-md border border-border bg-muted/30 p-3 sm:flex-row">
+                      <Input
+                        autoFocus
+                        value={newOrgName}
+                        onChange={(e) => setNewOrgName(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            handleAddOrg();
+                          }
+                        }}
+                        placeholder="New organization name"
+                        className="flex-1"
+                      />
+                      <div className="flex gap-2">
+                        <Button type="button" onClick={handleAddOrg} size="sm">
+                          Add
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            setAddingOrg(false);
+                            setNewOrgName("");
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-            <div className="flex items-center justify-between gap-4">
-              <p className="text-xs text-muted-foreground">
-                Using approved example set.
-              </p>
-              <Button
-                onClick={() => runGenerate(0)}
-                disabled={!canSubmit || loading}
-                size="lg"
-              >
-                {loading ? "Analyzing…" : "Analyze and Draft Response"}
-              </Button>
-            </div>
-            {loading && (
-              <p className="text-center text-xs text-muted-foreground">
-                Analyzing the review and applying the organization playbook…
-              </p>
-            )}
-          </CardContent>
-        </Card>
+                <div className="space-y-2">
+                  <Label htmlFor="additionalContext">Additional context</Label>
+                  <Textarea
+                    id="additionalContext"
+                    value={additionalContext}
+                    onChange={(e) => setAdditionalContext(e.target.value)}
+                    placeholder="e.g. The product has been discontinued. Please share the updated pricing."
+                    className="min-h-[90px] resize-y"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Add only information the assistant could not know from the pasted content.
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-xs text-muted-foreground">Using approved example set.</p>
+                  <Button onClick={() => runGenerate(0)} disabled={!canSubmit || loading} size="lg">
+                    {loading ? "Analyzing…" : "Analyze and Draft Response"}
+                  </Button>
+                </div>
+                {loading && (
+                  <p className="text-center text-xs text-muted-foreground">
+                    Analyzing the review and applying the organization playbook…
+                  </p>
+                )}
+              </CardContent>
+            </Card>
           </div>
           {/* Example use cases side panel */}
           <aside className="lg:sticky lg:top-6 lg:self-start">
@@ -492,10 +486,7 @@ function Index() {
                   }
                 />
                 {result.analysis.importantConcern && (
-                  <AnalysisRow
-                    label="Important concern"
-                    value={result.analysis.importantConcern}
-                  />
+                  <AnalysisRow label="Important concern" value={result.analysis.importantConcern} />
                 )}
                 {result.analysis.privacySensitivity && (
                   <AnalysisRow
@@ -598,7 +589,11 @@ function Index() {
 
         {/* Playbook — purple accent */}
         <section className="mt-12">
-          <Accordion type="single" collapsible className="rounded-lg border-2 border-primary/40 bg-primary/[0.03] shadow-sm">
+          <Accordion
+            type="single"
+            collapsible
+            className="rounded-lg border-2 border-primary/40 bg-primary/[0.03] shadow-sm"
+          >
             <AccordionItem value="playbook" className="border-none">
               <AccordionTrigger className="px-5 py-4 text-base font-semibold hover:no-underline text-left">
                 <span className="flex items-center gap-2">
@@ -624,39 +619,45 @@ function Index() {
 
                 <Accordion type="multiple" className="mt-3">
                   <PlaybookItem value="why" title="Why Respond to Customers?">
-                    Responding shows current and future customers that the organization takes feedback seriously. It builds trust, reinforces a consistent brand voice, and provides quiet, credible signals that do not read as self-promotion. 
+                    Responding shows current and future customers that the organization takes
+                    feedback seriously. It builds trust, reinforces a consistent brand voice, and
+                    provides quiet, credible signals that do not read as self-promotion.
                   </PlaybookItem>
                   <PlaybookItem value="formula" title="The Response Formula">
-                    Thank the customer, reflect one meaningful idea from their communication conceptually, reinforce one or two organization strengths, address any concern calmly if needed, and close with appreciation rather than a sales pitch.
+                    Thank the customer, reflect one meaningful idea from their communication
+                    conceptually, reinforce one or two organization strengths, address any concern
+                    calmly if needed, and close with appreciation rather than a sales pitch.
                   </PlaybookItem>
                   <PlaybookItem value="mirror" title="Conceptual Mirroring">
-                    Show that you understood what the customer meant - do not rewrite their sentence, repeat distinctive phrases, or publish similar sentences with minor substitutions.
+                    Show that you understood what the customer meant - do not rewrite their
+                    sentence, repeat distinctive phrases, or publish similar sentences with minor
+                    substitutions.
                   </PlaybookItem>
                   <PlaybookItem value="pillars" title="Core Messaging Pillars">
-                    Personalized learning · Individualized support · Experienced instructors · Learner progress and confidence · Regular communication · Supportive environment · Flexible scheduling · Year-round availability · Return on investment and customer value · Established brand. Choose one or two per response.
+                    Personalized learning · Individualized support · Experienced instructors ·
+                    Learner progress and confidence · Regular communication · Supportive environment
+                    · Flexible scheduling · Year-round availability · Return on investment and
+                    customer value · Established brand. Choose one or two per response.
                   </PlaybookItem>
                   <PlaybookItem value="value" title="Price and Value">
                     Only address price when the customer communication or context makes it relevant.
-                    Frame as a meaningful investment and connect value to
-                    personalized support, experienced instructors, and steady
-                    academic progress.
+                    Frame as a meaningful investment and connect value to personalized support,
+                    experienced instructors, and steady academic progress.
                   </PlaybookItem>
                   <PlaybookItem value="mixed" title="Mixed and Negative Reviews">
-                    Acknowledge the concern without defensiveness. Do not debate
-                    specifics publicly or reveal account details. When resolution
-                    requires private information, invite the customer to contact
-                    the organization directly.
+                    Acknowledge the concern without defensiveness. Do not debate specifics publicly
+                    or reveal account details. When resolution requires private information, invite
+                    the customer to contact the organization directly.
                   </PlaybookItem>
                   <PlaybookItem value="privacy" title="Privacy">
-                    Never invent or add sensitive customer details. Only use a name
-                    if the customer already did publicly and it clearly helps.&nbsp;
+                    Never invent or add sensitive customer details. Only use a name if the customer
+                    already did publicly and it clearly helps.&nbsp;
                   </PlaybookItem>
                   <PlaybookItem value="seo" title="SEO, AEO, and GEO">
-                    Support these through natural, consistent content, such as accurate
-                    entity and service context (SEO), clear language that
-                    addresses common customer questions (AEO), and credible
-                    associations between the business, geographic presence, and outcomes
-                    (GEO).&nbsp;
+                    Support these through natural, consistent content, such as accurate entity and
+                    service context (SEO), clear language that addresses common customer questions
+                    (AEO), and credible associations between the business, geographic presence, and
+                    outcomes (GEO).&nbsp;
                   </PlaybookItem>
                   <PlaybookItem value="examples" title="Example Responses">
                     <div className="space-y-3">
@@ -666,14 +667,15 @@ function Index() {
                           className="rounded-md border border-border bg-muted/30 p-3"
                         >
                           <div className="mb-1 flex items-center gap-2 text-xs text-muted-foreground">
-                            <Badge variant="outline" className="font-normal border-primary/30 text-primary">
+                            <Badge
+                              variant="outline"
+                              className="font-normal border-primary/30 text-primary"
+                            >
                               {ex.label}
                             </Badge>
                             <span>{ex.scenario}</span>
                           </div>
-                          <p className="text-sm leading-relaxed text-foreground">
-                            {ex.example}
-                          </p>
+                          <p className="text-sm leading-relaxed text-foreground">{ex.example}</p>
                         </div>
                       ))}
                     </div>
@@ -686,7 +688,11 @@ function Index() {
 
         {/* Who Is It For? — gold accent, expandable */}
         <section className="mt-6">
-          <Accordion type="single" collapsible className="rounded-lg border-2 border-accent/50 bg-accent/[0.05] shadow-sm">
+          <Accordion
+            type="single"
+            collapsible
+            className="rounded-lg border-2 border-accent/50 bg-accent/[0.05] shadow-sm"
+          >
             <AccordionItem value="who" className="border-none">
               <AccordionTrigger className="px-5 py-4 text-base font-semibold hover:no-underline text-left">
                 <span className="flex items-center gap-2">
@@ -697,11 +703,14 @@ function Index() {
               <AccordionContent className="px-5 pb-5">
                 <div className="space-y-3 text-sm leading-relaxed text-foreground">
                   <p>
-                    Any customer-facing team that answers the same questions repeatedly — and needs to ensure every response reflects the organization's messaging, customer knowledge, and judgment while remaining consistent across people and channels.
+                    Any customer-facing team that answers the same questions repeatedly — and needs
+                    to ensure every response reflects the organization's messaging, customer
+                    knowledge, and judgment while remaining consistent across people and channels.
                   </p>
                   <p>This workflow redesigns that process.</p>
                   <p>
-                    Rather than asking people to analyze every message manually, the system performs repeatable reasoning and leaves only business-context decisions to the human.
+                    Rather than asking people to analyze every message manually, the system performs
+                    repeatable reasoning and leaves only business-context decisions to the human.
                   </p>
                 </div>
               </AccordionContent>
@@ -711,7 +720,11 @@ function Index() {
 
         {/* Portfolio — violet accent */}
         <section className="mt-6 mb-16">
-          <Accordion type="single" collapsible className="rounded-lg border-2 border-violet/50 bg-violet/[0.05] shadow-sm">
+          <Accordion
+            type="single"
+            collapsible
+            className="rounded-lg border-2 border-violet/50 bg-violet/[0.05] shadow-sm"
+          >
             <AccordionItem value="portfolio" className="border-none">
               <AccordionTrigger className="px-5 py-4 text-base font-semibold hover:no-underline text-left">
                 <span className="flex items-center gap-2">
@@ -726,10 +739,15 @@ function Index() {
                   </h3>
                   <div className="text-sm leading-relaxed space-y-3">
                     <p>
-                      A reusable AI-native reasoning workflow that turns organizational judgment into a repeatable system.
+                      A reusable AI-native reasoning workflow that turns organizational judgment
+                      into a repeatable system.
                     </p>
                     <p>
-                      It has been designed to combine retrieval, structured reasoning, domain-specific prompting, and explainable outputs to operationalize customer responses across the organization. The result is a repeatable human-in-the-loop system that reduces response time while maintaining a consistent, trustworthy brand experience with ready-to-use customer responses.
+                      It has been designed to combine retrieval, structured reasoning,
+                      domain-specific prompting, and explainable outputs to operationalize customer
+                      responses across the organization. The result is a repeatable
+                      human-in-the-loop system that reduces response time while maintaining a
+                      consistent, trustworthy brand experience with ready-to-use customer responses.
                     </p>
                   </div>
 
@@ -751,7 +769,9 @@ function Index() {
                           {step}
                         </span>
                         {i < arr.length - 1 && (
-                          <span aria-hidden className="text-base text-violet/70">→</span>
+                          <span aria-hidden className="text-base text-violet/70">
+                            →
+                          </span>
                         )}
                       </div>
                     ))}
@@ -785,10 +805,18 @@ function Index() {
                   </h3>
                   <div className="text-sm leading-relaxed space-y-3">
                     <p>
-                      The production architecture is designed to learn from responses the organization has already approved and published. This can be through live review history retrieval or pre-seeded examples covering common scenarios such as short reviews, detailed testimonials, progress stories, and mixed and negative feedback.
+                      The production architecture is designed to learn from responses the
+                      organization has already approved and published. This can be through live
+                      review history retrieval or pre-seeded examples covering common scenarios such
+                      as short reviews, detailed testimonials, progress stories, and mixed and
+                      negative feedback.
                     </p>
                     <p>
-                      In the current version, the examples serve as a visible reference library for approved tone, structure, and edge-case handling, while the generator applies the encoded business playbook. A next-level version would dynamically retrieve the most relevant approved examples for each incoming customer message and include them as generation context.
+                      In the current version, the examples serve as a visible reference library for
+                      approved tone, structure, and edge-case handling, while the generator applies
+                      the encoded business playbook. A next-level version would dynamically retrieve
+                      the most relevant approved examples for each incoming customer message and
+                      include them as generation context.
                     </p>
                   </div>
 
@@ -817,13 +845,7 @@ function Index() {
                       <div className="space-y-2">
                         <p className="text-sm font-semibold text-foreground">AI Determines:</p>
                         <ul className="space-y-1.5 text-sm text-foreground">
-                          {[
-                            "Themes",
-                            "Intent",
-                            "Structure",
-                            "Tone",
-                            "Draft",
-                          ].map((item) => (
+                          {["Themes", "Intent", "Structure", "Tone", "Draft"].map((item) => (
                             <li key={item} className="flex gap-2">
                               <span className="text-violet">✓</span>
                               <span>{item}</span>
@@ -852,7 +874,10 @@ function Index() {
                     <li>Surface only business considerations requiring human review</li>
                   </ol>
                   <p className="text-sm leading-relaxed">
-                    The messaging layer is replaced with categories like time to value, ease of implementation, adoption, support quality, reliability, integrations, security and compliance, workflow fit, product capabilities, AI and automation, ROI, feature gaps, and renewal or expansion signals.
+                    The messaging layer is replaced with categories like time to value, ease of
+                    implementation, adoption, support quality, reliability, integrations, security
+                    and compliance, workflow fit, product capabilities, AI and automation, ROI,
+                    feature gaps, and renewal or expansion signals.
                   </p>
                   <div className="rounded-md border border-violet/40 bg-violet/[0.08] p-4">
                     <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-violet">
@@ -886,7 +911,10 @@ function Index() {
 
         <footer className="mt-10 mb-16 border-t border-border/60 pt-6 text-center text-xs text-muted-foreground">
           <p>
-            <span className="font-medium text-foreground">Built by Aurics.AI: An AI-Native GTM Studio</span>&nbsp;
+            <span className="font-medium text-foreground">
+              Built by Aurics.AI: An AI-Native GTM Studio
+            </span>
+            &nbsp;
           </p>
         </footer>
       </main>
@@ -905,9 +933,7 @@ function PlaybookItem({
 }) {
   return (
     <AccordionItem value={value}>
-      <AccordionTrigger className="text-sm hover:no-underline">
-        {title}
-      </AccordionTrigger>
+      <AccordionTrigger className="text-sm hover:no-underline">{title}</AccordionTrigger>
       <AccordionContent className="text-sm leading-relaxed text-foreground/90">
         {children}
       </AccordionContent>

@@ -1,5 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Copy, Check, Heart, MessageCircle, Sparkles, Users, Repeat, ThumbsUp, Star } from "lucide-react";
+import {
+  ArrowLeft,
+  Copy,
+  Check,
+  Heart,
+  MessageCircle,
+  Sparkles,
+  Users,
+  Repeat,
+  ThumbsUp,
+  Star,
+} from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -8,7 +19,10 @@ import { Card, CardContent } from "@/components/ui/card";
 export const Route = createFileRoute("/guides/positive-feedback")({
   head: () => ({
     meta: [
-      { title: "Positive Feedback Examples: Respond to Great Reviews & Build Brand Loyalty — Aurics.AI" },
+      {
+        title:
+          "Positive Feedback Examples: Respond to Great Reviews & Build Brand Loyalty — Aurics.AI",
+      },
       {
         name: "description",
         content:
@@ -41,50 +55,42 @@ const EXAMPLES: ExampleItem[] = [
   {
     icon: <Sparkles className="h-5 w-5 text-[var(--accent)]" />,
     label: "Product praise",
-    text:
-      "Thank you so much, [Name]! We're thrilled to hear [specific product] is working well for you. Helping customers get real results is exactly why we built it, and we'd love to keep supporting you as you grow.",
+    text: "Thank you so much, [Name]! We're thrilled to hear [specific product] is working well for you. Helping customers get real results is exactly why we built it, and we'd love to keep supporting you as you grow.",
   },
   {
     icon: <Heart className="h-5 w-5 text-[var(--accent)]" />,
     label: "Service praise",
-    text:
-      "We really appreciate you taking the time to share this, [Name]. Delivering a thoughtful, human experience is a core part of who we are, and feedback like yours lets the team know they're making a difference.",
+    text: "We really appreciate you taking the time to share this, [Name]. Delivering a thoughtful, human experience is a core part of who we are, and feedback like yours lets the team know they're making a difference.",
   },
   {
     icon: <Users className="h-5 w-5 text-[var(--accent)]" />,
     label: "Team member shout-out",
-    text:
-      "Thank you, [Name]! We've shared your kind words with [Team Member] and the whole team. Celebrating individual care is one of our favorite parts of the day, and we're grateful you noticed.",
+    text: "Thank you, [Name]! We've shared your kind words with [Team Member] and the whole team. Celebrating individual care is one of our favorite parts of the day, and we're grateful you noticed.",
   },
   {
     icon: <Repeat className="h-5 w-5 text-[var(--accent)]" />,
     label: "Repeat customer",
-    text:
-      "It means the world to us that you keep coming back, [Name]. Long-term relationships like yours are the foundation of our business, and we look forward to continuing to earn your trust every time.",
+    text: "It means the world to us that you keep coming back, [Name]. Long-term relationships like yours are the foundation of our business, and we look forward to continuing to earn your trust every time.",
   },
   {
     icon: <MessageCircle className="h-5 w-5 text-[var(--accent)]" />,
     label: "Social media mention",
-    text:
-      "So glad you shared this, [Name]! Community feedback is how we learn what matters most. Thanks for being part of the conversation and helping others discover what we do.",
+    text: "So glad you shared this, [Name]! Community feedback is how we learn what matters most. Thanks for being part of the conversation and helping others discover what we do.",
   },
   {
     icon: <ThumbsUp className="h-5 w-5 text-[var(--accent)]" />,
     label: "Short and warm",
-    text:
-      "Thank you, [Name]! We genuinely appreciate your support and are so glad you had a great experience. We're here whenever you need us.",
+    text: "Thank you, [Name]! We genuinely appreciate your support and are so glad you had a great experience. We're here whenever you need us.",
   },
   {
     icon: <Star className="h-5 w-5 text-[var(--accent)]" />,
     label: "Values-driven",
-    text:
-      "Thank you for the wonderful feedback, [Name]. Putting [core value, e.g., personalized support] at the center of every interaction is non-negotiable for us, and we're delighted that came through in your experience.",
+    text: "Thank you for the wonderful feedback, [Name]. Putting [core value, e.g., personalized support] at the center of every interaction is non-negotiable for us, and we're delighted that came through in your experience.",
   },
   {
     icon: <Sparkles className="h-5 w-5 text-[var(--accent)]" />,
     label: "Invite them back",
-    text:
-      "Thank you, [Name]! We're so happy you had a great experience. We'd love to welcome you back soon — and please don't hesitate to reach out if there's anything else we can do for you.",
+    text: "Thank you, [Name]! We're so happy you had a great experience. We'd love to welcome you back soon — and please don't hesitate to reach out if there's anything else we can do for you.",
   },
 ];
 
@@ -106,7 +112,10 @@ function PositiveFeedbackGuide() {
       {/* Brand bar */}
       <div className="border-b border-border/40 bg-[var(--card)]">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-          <Link to="/" className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-[var(--primary)]">
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-[var(--primary)]"
+          >
             <ArrowLeft className="h-4 w-4" />
             Back to Customer Response Assistant
           </Link>
@@ -124,15 +133,20 @@ function PositiveFeedbackGuide() {
             Positive Feedback Examples
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Respond to great reviews in a way that reinforces your brand, builds loyalty, and invites repeat business — without sounding like a sales pitch.
+            Respond to great reviews in a way that reinforces your brand, builds loyalty, and
+            invites repeat business — without sounding like a sales pitch.
           </p>
         </header>
 
         {/* Why respond */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-foreground">Why respond to positive feedback?</h2>
+          <h2 className="text-2xl font-semibold text-foreground">
+            Why respond to positive feedback?
+          </h2>
           <p className="mt-3 text-muted-foreground">
-            A positive review is more than a compliment. It is a public signal of trust, a chance to show your brand voice, and an invitation for future customers to picture themselves working with you. A thoughtful reply can:
+            A positive review is more than a compliment. It is a public signal of trust, a chance to
+            show your brand voice, and an invitation for future customers to picture themselves
+            working with you. A thoughtful reply can:
           </p>
           <ul className="mt-4 list-disc space-y-2 pl-5 text-muted-foreground">
             <li>Strengthen the relationship with the customer who left the review.</li>
@@ -165,9 +179,12 @@ function PositiveFeedbackGuide() {
 
         {/* Examples */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-foreground">Copy-paste positive feedback examples</h2>
+          <h2 className="text-2xl font-semibold text-foreground">
+            Copy-paste positive feedback examples
+          </h2>
           <p className="mt-3 text-muted-foreground">
-            Replace [Name] and bracketed details with your own context. Each example is designed to sound natural while reinforcing what makes your organization different.
+            Replace [Name] and bracketed details with your own context. Each example is designed to
+            sound natural while reinforcing what makes your organization different.
           </p>
 
           <div className="mt-6 space-y-4">
@@ -178,9 +195,7 @@ function PositiveFeedbackGuide() {
                     {example.icon}
                     <h3 className="font-semibold text-foreground">{example.label}</h3>
                   </div>
-                  <p className="mt-3 text-base leading-relaxed text-foreground">
-                    {example.text}
-                  </p>
+                  <p className="mt-3 text-base leading-relaxed text-foreground">{example.text}</p>
                   <div className="mt-4 flex justify-end">
                     <Button
                       variant="outline"
@@ -210,25 +225,37 @@ function PositiveFeedbackGuide() {
           <h2 className="text-2xl font-semibold text-foreground">How to adapt these examples</h2>
           <ol className="mt-4 list-decimal space-y-3 pl-5 text-muted-foreground">
             <li>
-              <strong className="text-foreground">Mirror the customer's language conceptually.</strong> Show you understood what they meant, but don't repeat their exact phrasing back at them.
+              <strong className="text-foreground">
+                Mirror the customer's language conceptually.
+              </strong>{" "}
+              Show you understood what they meant, but don't repeat their exact phrasing back at
+              them.
             </li>
             <li>
-              <strong className="text-foreground">Pick one strength.</strong> Choose the organization value that best matches their praise — quality, speed, support, personalization, or expertise.
+              <strong className="text-foreground">Pick one strength.</strong> Choose the
+              organization value that best matches their praise — quality, speed, support,
+              personalization, or expertise.
             </li>
             <li>
-              <strong className="text-foreground">Keep it human.</strong> One or two short paragraphs are usually enough. Avoid jargon, emojis overload, or canned marketing language.
+              <strong className="text-foreground">Keep it human.</strong> One or two short
+              paragraphs are usually enough. Avoid jargon, emojis overload, or canned marketing
+              language.
             </li>
             <li>
-              <strong className="text-foreground">Invite, don't push.</strong> "We'd love to welcome you back" is warmer than a direct upsell.
+              <strong className="text-foreground">Invite, don't push.</strong> "We'd love to welcome
+              you back" is warmer than a direct upsell.
             </li>
           </ol>
         </section>
 
         {/* CTA */}
         <section className="rounded-2xl border border-[var(--primary)]/20 bg-[var(--primary)]/5 p-6 sm:p-8">
-          <h2 className="text-2xl font-semibold text-foreground">Generate on-brand responses in seconds</h2>
+          <h2 className="text-2xl font-semibold text-foreground">
+            Generate on-brand responses in seconds
+          </h2>
           <p className="mt-2 text-muted-foreground">
-            Paste any customer communication into the Customer Response Assistant and get a warm, tailored reply that follows your approved messaging.
+            Paste any customer communication into the Customer Response Assistant and get a warm,
+            tailored reply that follows your approved messaging.
           </p>
           <div className="mt-5">
             <Link to="/">
