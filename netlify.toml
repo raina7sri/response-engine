@@ -1,0 +1,19 @@
+# Netlify build configuration.
+#
+# This is a TanStack Start (SSR) app built by Vite + Nitro. Nitro's `netlify`
+# preset emits:
+#   - static/client assets -> dist/            (the publish directory)
+#   - the SSR handler       -> .netlify/functions-internal/server/
+#     (auto-detected by Netlify; do not set `functions` to this path)
+#
+# NITRO_PRESET is pinned so the Netlify target is explicit and version-controlled
+# rather than relying on Nitro's build-environment sniffing. It is scoped to
+# Netlify builds only, so the repo's default Cloudflare target (see vite.config.ts)
+# is unaffected elsewhere.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NITRO_PRESET = "netlify"
