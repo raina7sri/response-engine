@@ -4,7 +4,7 @@
 
 A production implementation of a reusable AI-native customer-response workflow.
 
-**Live demo:** [raina7sri.github.io/response-engine](https://raina7sri.github.io/response-engine/) *(hosted on GitHub Pages)*
+**Live demo:** **[raina7sri.github.io/response-engine](https://raina7sri.github.io/response-engine/)**
 
 ---
 
@@ -88,11 +88,11 @@ Each of these would be its **own implementation** — requiring its own domain k
 
 **Current state (what runs today):**
 - **Frontend:** React 19 + TanStack Router + Tailwind v4 + shadcn/ui.
-- **Build:** Vite 8, deployed as a pure static client-side SPA — no backend, no serverless functions, no runtime dependencies.
-- **Hosting:** GitHub Pages via GitHub Actions (`.github/workflows/pages.yml`), auto-deploys on every push to `main`.
+- **Build:** Vite 8 (pure client-side SPA — no SSR, no backend).
 - **Response reasoning:** deterministic, encoded logic (see `src/lib/response-generator.ts`) — theme regexes, sentiment lexicon, playbook pillars, and response-composition rules.
 - **Playbook representation:** typed data (`ThemeSignal[]`, `pillar` strings, `APPROVED_EXAMPLES` list) so it's inspectable and swappable.
 - **Human review step:** the UI presents the draft + rationale side-by-side for a person to edit or copy before publishing.
+- **Deployment:** static site deployed to GitHub Pages via GitHub Actions (see `.github/workflows/pages.yml`).
 - **No backend, no data storage, no external API calls, no user accounts.** Session state lives in the browser.
 
 **No LLM is called in the current implementation.** The `generateResponse` function is a deterministic reasoning layer that produces the same structured output shape a live model would — designed so the model call can be swapped in later without changing the UI or the playbook interface.
@@ -119,18 +119,18 @@ See [docs/production-roadmap.md](docs/production-roadmap.md) for a staged plan.
 
 ## Running Locally
 
-**Prerequisites:** Node.js 20+ and npm (any recent version).
+**Prerequisites:** Node 20+ and npm.
 
 ```bash
 npm install
-npm run dev        # start the Vite dev server (default: http://localhost:5173)
-npm run build      # production build (output: dist/)
+npm run dev        # start the dev server (default: http://localhost:5173)
+npm run build      # production build (Vite → dist/)
 npm run preview    # serve the production build locally
 npm run lint       # ESLint (TypeScript + React)
 npm run format     # Prettier
 ```
 
-No environment variables are required.
+No environment variables are required for the current implementation.
 
 ## Design Principles
 
